@@ -1,0 +1,17 @@
+<html>
+<body>
+<pre>
+    $!{value1}
+    $!{value2} ## 如果不存在，强制为空
+    ${value3}
+
+    colors: $!{colors}
+
+    #foreach($color in $colors)
+        This is Color $!{foreach.index}: $color, $!{foreach.count}
+    #end
+
+
+</pre>
+</body>
+</html>
