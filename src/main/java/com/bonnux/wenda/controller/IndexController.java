@@ -1,25 +1,23 @@
 package com.bonnux.wenda.controller;
 
-import com.bonnux.wenda.aspect.LogAspect;
 import com.bonnux.wenda.model.User;
 import com.bonnux.wenda.service.WendaService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
-import javax.net.ssl.HttpsURLConnection;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.*;
 
-@Controller
+
+//@Controller
 public class IndexController {
     private static final Logger logger = LoggerFactory.getLogger(IndexController.class);
 
@@ -30,7 +28,7 @@ public class IndexController {
     @ResponseBody
     public String index(HttpSession httpSession) {
         logger.info("VISIT HOME");
-        return wendaService.getMessage(2) + "Hello World" + httpSession.getAttribute("msg");
+        return wendaService.getMessage(2) + "Hello NowCoder" + httpSession.getAttribute("msg");
     }
 
     @RequestMapping(path = {"/profile/{groupId}/{userId}"})
@@ -60,8 +58,8 @@ public class IndexController {
     @RequestMapping(path = {"/request"}, method = {RequestMethod.GET})
     @ResponseBody
     public String request(Model model, HttpServletResponse response,
-                           HttpServletRequest request,
-                           HttpSession httpSession,
+                          HttpServletRequest request,
+                          HttpSession httpSession,
                           @CookieValue("JSESSIONID") String sessionId) {
         StringBuilder sb = new StringBuilder();
         sb.append("COOKIEVALUE:" + sessionId);
@@ -80,8 +78,8 @@ public class IndexController {
         sb.append(request.getPathInfo() + "<br>");
         sb.append(request.getRequestURI() + "<br>");
 
-        response.addHeader("bonnux.wendaId", "hello");
-        response.addCookie(new Cookie("username", "bonnux.wenda"));
+        response.addHeader("nowcoderId", "hello");
+        response.addCookie(new Cookie("username", "nowcoder"));
 
         return sb.toString();
     }

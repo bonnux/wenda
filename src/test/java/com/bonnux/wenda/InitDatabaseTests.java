@@ -1,22 +1,25 @@
 package com.bonnux.wenda;
 
+import com.bonnux.wenda.dao.QuestionDAO;
 import com.bonnux.wenda.dao.UserDAO;
 import com.bonnux.wenda.model.User;
 import com.bonnux.wenda.model.Question;
-import com.bonnux.wenda.dao.QuestionDAO;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
 
 import java.util.Date;
 import java.util.Random;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
+@WebAppConfiguration
 public class InitDatabaseTests {
+
 	@Autowired
 	UserDAO userDAO;
 
@@ -51,6 +54,8 @@ public class InitDatabaseTests {
 		Assert.assertEquals("newpassword", userDAO.selectById(1).getPassword());
 		userDAO.deleteById(1);
 		Assert.assertNull(userDAO.selectById(1));
+
+		//System.out.println(questionDAO.selectLatestQuestions(0,0,10));
 	}
 
 }
