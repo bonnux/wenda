@@ -3,9 +3,6 @@ package com.bonnux.wenda.dao;
 import com.bonnux.wenda.model.LoginTicket;
 import org.apache.ibatis.annotations.*;
 
-/**
- * Created by nowcoder on 2016/7/2.
- */
 @Mapper
 public interface LoginTicketDAO {
     String TABLE_NAME = "login_ticket";
