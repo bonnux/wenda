@@ -1,6 +1,5 @@
 package com.bonnux.wenda.dao;
 
-import com.bonnux.wenda.model.User;
 import com.bonnux.wenda.model.Question;
 import org.apache.ibatis.annotations.*;
 
@@ -18,4 +17,10 @@ public interface QuestionDAO {
 
     List<Question> selectLatestQuestions(@Param("userId") int userId, @Param("offset") int offset,
                                          @Param("limit") int limit);
+
+    @Select({"select ", SELECT_FIELDS, " from ", TABLE_NAME, " where id=#{id}"})
+    Question getById(int id);
+
+    @Update({"update ", TABLE_NAME, " set comment_count = #{commentCount} where id=#{id}"})
+    int updateCommentCount(@Param("id") int id, @Param("commentCount") int commentCount);
 }
