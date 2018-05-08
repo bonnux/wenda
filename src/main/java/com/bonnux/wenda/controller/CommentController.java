@@ -42,9 +42,10 @@ public class CommentController {
     public String addComment(@RequestParam("questionId") int questionId,
                              @RequestParam("content") String content) {
         try {
+            // 过滤content
             content = HtmlUtils.htmlEscape(content);
             content = sensitiveService.filter(content);
-            // 过滤content
+
             Comment comment = new Comment();
             if (hostHolder.getUser() != null) {
                 comment.setUserId(hostHolder.getUser().getId());
