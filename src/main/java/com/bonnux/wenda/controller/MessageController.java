@@ -120,7 +120,6 @@ public class MessageController {
             msg.setFromId(fromId);
             msg.setToId(toId);
             msg.setCreatedDate(new Date());
-            //msg.setConversationId(fromId < toId ? String.format("%d_%d", fromId, toId) : String.format("%d_%d", toId, fromId));
             messageService.addMessage(msg);
             return WendaUtil.getJSONString(msg.getId());
         } catch (Exception e) {

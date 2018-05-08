@@ -1,7 +1,5 @@
 package com.bonnux.wenda.controller;
 
-
-import com.bonnux.wenda.model.HostHolder;
 import com.bonnux.wenda.model.Question;
 import com.bonnux.wenda.model.ViewObject;
 import com.bonnux.wenda.service.QuestionService;
